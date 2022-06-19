@@ -10,10 +10,9 @@ import java.lang.Exception
 interface IPetsRepository {
     suspend fun getRecentNearPets(): Response<List<PetItem>>
     suspend fun getNearPets(): Response<List<PetItem>>
-    suspend fun savePet()
 }
 
-class PetsRepository(val dataSource: IPetsDataSource) : IPetsRepository {
+class PetsRepository(private val dataSource: IPetsDataSource) : IPetsRepository {
     override suspend fun getRecentNearPets(): Response<List<PetItem>> =
         withContext(Dispatchers.IO) {
             val response = try {
@@ -33,9 +32,5 @@ class PetsRepository(val dataSource: IPetsDataSource) : IPetsRepository {
         }
 
         return@withContext Response.Success(data = response)
-    }
-
-    override suspend fun savePet() {
-        TODO("Not yet implemented")
     }
 }
