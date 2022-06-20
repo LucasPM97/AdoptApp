@@ -18,7 +18,7 @@ object MockPet {
 
     private val yearList = (2017..2022).toList()
     private val monthList = (1..12).toList()
-    private val dayList = (1..30).toList()
+    private val dayList = (1..29).toList()
     private fun getRandomDate(): LocalDate =
         LocalDate.of(yearList.random(), monthList.random(), dayList.random())
 
