@@ -107,7 +107,7 @@ class HomeViewModel(
                     val pets = response.data
 
                     pets?.let {
-                        _newestPetsUiState.update {
+                        _nearPetsUiState.update {
                             it.copy(
                                 pets = nearPetsUiState.value.pets + pets
                             )

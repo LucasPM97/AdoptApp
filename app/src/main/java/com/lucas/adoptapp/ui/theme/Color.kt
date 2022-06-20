@@ -20,3 +20,4 @@ val VaccineBackground = LightBlue
 val VaccineIcon = White
 
 val ScreenBackground = Color(0xFFF5F3F8)
+val SurfaceBackground = White

@@ -35,6 +35,7 @@ private fun HomeScreenContent(
             BannerList()
             Spacer(modifier= Modifier.height(20.dp))
             RecentNearPetList(newestPetsState)
+            Spacer(modifier= Modifier.height(20.dp))
             NearPetsList(nearPetsState)
         }
     }
