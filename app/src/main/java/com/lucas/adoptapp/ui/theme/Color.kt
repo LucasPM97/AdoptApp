@@ -12,8 +12,11 @@ val DarkText = DarkBlue
 val LightText = White
 val CaptionText = Gray
 
-val UnActiveButton = Color(0xFF8E8E8E)
+val ImagePlaceholder = Gray
+
+val UnactiveBottomBarItem = Color(0xFF8E8E8E)
 
 val VaccineBackground = LightBlue
+val VaccineIcon = White
 
 val ScreenBackground = Color(0xFFF5F3F8)

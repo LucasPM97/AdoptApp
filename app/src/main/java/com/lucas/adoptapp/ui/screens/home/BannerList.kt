@@ -4,5 +4,4 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun BannerList() {
-    TODO("Not yet implemented")
 }

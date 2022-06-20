@@ -4,5 +4,4 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun NearPetsList(nearPetsState: NearPetsUiState) {
-    TODO("Not yet implemented")
 }
