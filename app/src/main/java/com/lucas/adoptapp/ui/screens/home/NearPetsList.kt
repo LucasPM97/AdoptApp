@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lucas.adoptapp.R
+import com.lucas.adoptapp.ui.composables.BigPetItem
 import com.lucas.adoptapp.ui.composables.HorizontalPetList
 import com.lucas.adoptapp.ui.composables.VerticalPetList
 import com.lucas.adoptapp.ui.theme.AdoptAppTheme
@@ -31,7 +32,18 @@ fun NearPetsList(state: NearPetsUiState) {
         )
         Spacer(modifier = Modifier.height(10.dp))
         if (!state.loading && state.pets.isNotEmpty()) {
-            VerticalPetList(state.pets)
+            Column(
+                verticalArrangement = Arrangement.spacedBy(20.dp),
+                modifier = Modifier.padding(vertical = 10.dp)
+            ) {
+                state.pets.forEach { pet ->
+                    BigPetItem(
+                        pet,
+                        height = 130,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
         }
     }
 }

@@ -99,7 +99,7 @@ class HomeViewModel(
         nearPetsJob?.cancel()
         nearPetsJob = viewModelScope.launch {
 
-            val response = repository.getRecentNearPets()
+            val response = repository.getNearPets()
 
             when (response) {
                 is Response.Success -> {

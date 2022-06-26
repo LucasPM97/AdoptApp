@@ -31,12 +31,33 @@ private fun HomeScreenContent(
     nearPetsState: NearPetsUiState
 ) {
     ScreenSurface {
-        Column(modifier = Modifier.fillMaxSize()) {
             BannerList()
             Spacer(modifier= Modifier.height(20.dp))
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
             RecentNearPetList(newestPetsState)
             Spacer(modifier= Modifier.height(20.dp))
             NearPetsList(nearPetsState)
         }
+    }
+}
+
+@Composable
+@Preview
+fun PreviewHomeScreenContent() {
+    AdoptAppTheme {
+        HomeScreenContent(
+            nearPetsState = NearPetsUiState(
+                loading = false,
+                pets = MockLists.createPetList(10)
+            ),
+            newestPetsState = NewestPetsUiState(
+                loading = false,
+                pets = MockLists.createPetList(20)
+            )
+        )
     }
 }

@@ -39,7 +39,6 @@ fun RecentNearPetList(state: NewestPetsUiState) {
 @Preview(showBackground = true, backgroundColor = 0xFFF5F3F8)
 fun PreviewRecentNearPetList() {
     AdoptAppTheme {
-
         val newestPetsState = NewestPetsUiState(
             loading = false,
             pets = MockLists.createPetList(10)

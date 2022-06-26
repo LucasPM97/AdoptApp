@@ -12,6 +12,6 @@ class MockPetsDataSource : IPetsDataSource {
 
     override suspend fun getNearPets(): List<PetItem> {
         delay(2000)
-        return MockLists.createPetList(10)
+        return MockLists.createPetList(4)
     }
 }
