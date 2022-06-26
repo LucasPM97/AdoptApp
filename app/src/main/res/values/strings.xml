@@ -2,4 +2,8 @@
     <string name="app_name">AdoptApp</string>
     <string name="recent_list_title">Recien llegados</string>
     <string name="near_list_title">Cerca tuyo</string>
+    <string name="donate_title_banner">¡Dona!</string>
+    <string name="donate_body_banner">Ayuda a que sigamos existiendo</string>
+    <string name="donate">Donar</string>
+    <string name="four_animals_content_description">four animals</string>
 </resources>
