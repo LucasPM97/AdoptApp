@@ -1,5 +1,6 @@
 package com.lucas.core.mocks
 
+import com.lucas.core.data.models.AgeType
 import com.lucas.core.data.models.PetItem
 import java.time.LocalDate
 
@@ -9,10 +10,9 @@ object MockPet {
             id = id.toString(),
             name = getRandomName(),
             imageUrl = getRandomImageUrl(),
-            vaccinated = getRandomVaccinated(),
-            birthDate = getRandomDate(),
-            publishDate = getRandomDate(),
-            location = "$id km"
+            isMale = getRandomBoolean(),
+            vaccinated = getRandomBoolean(),
+            age = getRandomAge()
         )
     }
 
@@ -41,5 +41,6 @@ object MockPet {
         ).random()
     }
 
-    private fun getRandomVaccinated(): Boolean = listOf(true, false).random()
+    private fun getRandomBoolean(): Boolean = listOf(true, false).random()
+    private fun getRandomAge(): AgeType = listOf(AgeType.Adult, AgeType.Puppy).random()
 }

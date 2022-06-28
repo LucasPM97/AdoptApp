@@ -5,6 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Female
+import androidx.compose.material.icons.outlined.Male
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,52 +23,57 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.lucas.adoptapp.ui.theme.*
+import com.lucas.core.data.models.AgeType
 import com.lucas.core.data.models.PetItem
 import com.lucas.core.mocks.MockPet
 
 @Composable
 fun BigPetItem(
     pet: PetItem,
-    height: Int,
     modifier: Modifier = Modifier
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.height(height.dp)
+        modifier = modifier
+            .background(
+                SurfaceBackground,
+                MaterialTheme.shapes.small
+            )
     ) {
 
+        val imageShape = RoundedCornerShape(
+            topStartPercent = 10,
+            bottomStartPercent = 10
+        )
         AsyncImage(
             model = pet.imageUrl,
             modifier = Modifier
-                .size(height.dp)
+                .fillMaxHeight()
+                .aspectRatio(1f)
                 .background(
                     ImagePlaceholder,
-                    MaterialTheme.shapes.small
+                    imageShape
                 )
-                .clip(MaterialTheme.shapes.small),
+                .clip(imageShape),
             contentScale = ContentScale.Crop,
             contentDescription = "${pet.name} photo"
         )
-        PetInfo(pet, maxHeigh = height)
+        Spacer(modifier = Modifier.width(10.dp))
+        PetInfo(
+            pet,
+            Modifier.weight(1f)
+        )
+        Icon(imageVector = Icons.Outlined.FavoriteBorder, contentDescription = "save")
+        Spacer(modifier = Modifier.width(10.dp))
     }
 }
 
 @Composable
-private fun PetInfo(pet: PetItem, maxHeigh: Int) {
-    Column(
-        modifier = Modifier
-            .background(
-                SurfaceBackground,
-                RoundedCornerShape(
-                    topEndPercent = 10,
-                    bottomEndPercent = 10
-                )
-            )
-            .heightIn(max = maxHeigh.dp)
-            .widthIn(max = 250.dp)
-            .fillMaxWidth()
-            .padding(10.dp)
-    ) {
+private fun PetInfo(
+    pet: PetItem,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -72,40 +81,40 @@ private fun PetInfo(pet: PetItem, maxHeigh: Int) {
                 text = pet.name,
                 color = DarkText,
                 fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
+                fontSize = 22.sp
             )
             Spacer(modifier = Modifier.width(5.dp))
             if (pet.vaccinated) {
                 VaccineIcon(
-                    iconSize = 10,
-                    modifier = Modifier
-                        .size(15.dp)
+                    iconSize = 20,
                 )
             }
         }
         Text(
-            text = "Tiene 2 años",
+            text = if (pet.isMale) "Macho" else "Hembra",
             color = CaptionText,
             fontWeight = FontWeight.Bold,
-            fontSize = 12.sp
+            fontSize = 14.sp
         )
-        Spacer(modifier = Modifier.height(25.dp))
-        Row(
-            verticalAlignment = Alignment.CenterVertically
+        Spacer(modifier = Modifier.height(5.dp))
+        Box(
+            modifier = Modifier
+                .background(DarkBlue, MaterialTheme.shapes.large)
+                .padding(
+                    vertical = 3.dp,
+                    horizontal = 6.dp
+                )
         ) {
-            Icon(
-                imageVector = Icons.Filled.LocationOn,
-                contentDescription = "location",
-                tint = DarkText,
-                modifier = Modifier.size(16.dp)
-            )
             Text(
-                text = "Distancia: ${pet.location}",
+                text = when (pet.age) {
+                    AgeType.Adult -> "ADULTO"
+                    AgeType.Puppy -> "CACHORRO"
+                },
+                color = LightText,
                 fontWeight = FontWeight.Bold,
-                fontSize = 12.sp
+                fontSize = 14.sp
             )
         }
-
     }
 }
 
@@ -115,8 +124,9 @@ fun PreviewBigPetItem() {
     AdoptAppTheme {
         BigPetItem(
             pet = MockPet.createPetItem(1),
-            height = 130,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(130.dp)
         )
     }
 }

@@ -29,7 +29,7 @@ fun DonateBanner(
     val bannerBackground = Color(0XFFFCBD59)
     Row(
         modifier = modifier
-            .background(bannerBackground, MaterialTheme.shapes.large)
+            .background(bannerBackground, MaterialTheme.shapes.small)
             .padding(20.dp)
     ) {
         Column(

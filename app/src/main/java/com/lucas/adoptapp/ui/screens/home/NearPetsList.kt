@@ -39,8 +39,8 @@ fun NearPetsList(state: NearPetsUiState) {
                 state.pets.forEach { pet ->
                     BigPetItem(
                         pet,
-                        height = 130,
                         modifier = Modifier.fillMaxWidth()
+                            .height(130.dp)
                     )
                 }
             }

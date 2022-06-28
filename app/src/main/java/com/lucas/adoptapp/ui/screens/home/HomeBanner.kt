@@ -18,16 +18,12 @@ fun HomeBanner() {
         ).random()
     }
 
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Banner(
-            visibleBanner,
-            modifier = Modifier
-                .height(200.dp)
-                .width(360.dp)
-        )
-    }
+    Banner(
+        visibleBanner,
+        modifier = Modifier
+            .height(200.dp)
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp)
+    )
 
 }
