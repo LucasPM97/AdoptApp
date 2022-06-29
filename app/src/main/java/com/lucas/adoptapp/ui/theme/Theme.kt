@@ -18,10 +18,14 @@ import androidx.core.view.ViewCompat
 
 private val LightColorScheme = lightColorScheme(
     primary = Red,
+    onPrimary = White,
     secondary = DarkBlue,
+    onSecondary = White,
     tertiary = White,
-    background = ScreenBackground,
-    surface = White
+    surface = ScreenBackground,
+    onSurface = DarkBlue,
+    surfaceVariant = White,
+    onSurfaceVariant = DarkBlue
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),

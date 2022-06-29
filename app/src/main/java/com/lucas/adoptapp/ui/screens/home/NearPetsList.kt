@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 import com.lucas.adoptapp.R
 import com.lucas.adoptapp.ui.composables.BigPetItem
 import com.lucas.adoptapp.ui.theme.AdoptAppTheme
-import com.lucas.adoptapp.ui.theme.DarkText
 import com.lucas.core.mocks.MockLists
 
 @Composable
@@ -23,8 +22,7 @@ fun NearPetsList(state: NearPetsUiState) {
     ) {
         Text(
             text = stringResource(R.string.near_list_title),
-            style = MaterialTheme.typography.titleLarge,
-            color = DarkText,
+            style = MaterialTheme.typography.titleLarge
         )
         Spacer(modifier = Modifier.height(10.dp))
         if (!state.loading && state.pets.isNotEmpty()) {
