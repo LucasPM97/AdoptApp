@@ -3,7 +3,6 @@ package com.lucas.adoptapp.ui.composables.banners
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,13 +12,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.lucas.adoptapp.R
-import com.lucas.adoptapp.ui.theme.*
+import com.lucas.adoptapp.ui.theme.AdoptAppTheme
+import com.lucas.adoptapp.ui.theme.DarkText
+import com.lucas.adoptapp.ui.theme.LightText
+import com.lucas.adoptapp.ui.theme.Red
 
 @Composable
 fun DonateBanner(
@@ -39,15 +39,13 @@ fun DonateBanner(
         ) {
             Text(
                 text = stringResource(R.string.donate_title_banner),
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleLarge,
                 color = DarkText,
-                fontSize = 24.sp
             )
             Text(
                 text = stringResource(R.string.donate_body_banner),
-                fontWeight = FontWeight.Bold,
-                color = DarkText,
-                fontSize = 14.sp
+                style = MaterialTheme.typography.bodyMedium,
+                color = DarkText
             )
             Spacer(modifier = Modifier.weight(1f))
             Box(
@@ -61,12 +59,12 @@ fun DonateBanner(
             ) {
                 Text(
                     text = stringResource(id = R.string.donate),
-                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = LightText,
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.Center),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
                 )
             }
         }

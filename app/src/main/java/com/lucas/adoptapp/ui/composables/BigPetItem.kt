@@ -4,11 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Female
-import androidx.compose.material.icons.outlined.Male
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,10 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.lucas.adoptapp.ui.theme.*
 import com.lucas.core.data.models.AgeType
@@ -80,8 +74,7 @@ private fun PetInfo(
             Text(
                 text = pet.name,
                 color = DarkText,
-                fontWeight = FontWeight.Bold,
-                fontSize = 22.sp
+                style = MaterialTheme.typography.titleSmall
             )
             Spacer(modifier = Modifier.width(5.dp))
             if (pet.vaccinated) {
@@ -93,8 +86,7 @@ private fun PetInfo(
         Text(
             text = if (pet.isMale) "Macho" else "Hembra",
             color = CaptionText,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp
+            style = MaterialTheme.typography.bodyMedium,
         )
         Spacer(modifier = Modifier.height(5.dp))
         Box(
@@ -111,8 +103,7 @@ private fun PetInfo(
                     AgeType.Puppy -> "CACHORRO"
                 },
                 color = LightText,
-                fontWeight = FontWeight.Bold,
-                fontSize = 14.sp
+                style = MaterialTheme.typography.bodyMedium
             )
         }
     }

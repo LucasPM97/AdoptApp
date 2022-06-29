@@ -1,14 +1,13 @@
 package com.lucas.adoptapp.ui.screens.home
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.lucas.adoptapp.R
 import com.lucas.adoptapp.ui.composables.HorizontalPetList
 import com.lucas.adoptapp.ui.theme.AdoptAppTheme
@@ -22,9 +21,8 @@ fun RecentNearPetList(state: NewestPetsUiState) {
     ) {
         Text(
             text = stringResource(R.string.recent_list_title),
-            fontSize = 24.sp,
+            style = MaterialTheme.typography.titleLarge,
             color = DarkText,
-            fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(start = 20.dp)
         )
         Spacer(modifier = Modifier.height(10.dp))
