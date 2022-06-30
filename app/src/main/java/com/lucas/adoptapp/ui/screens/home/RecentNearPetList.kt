@@ -26,9 +26,10 @@ fun RecentNearPetList(state: NewestPetsUiState) {
             modifier = Modifier.padding(start = 20.dp)
         )
         Spacer(modifier = Modifier.height(10.dp))
-        if (!state.loading && state.pets.isNotEmpty()) {
-            HorizontalPetList(state.pets)
-        }
+        HorizontalPetList(
+            state.pets,
+            isLoading = state.loading
+        )
     }
 }
 
@@ -40,6 +41,18 @@ fun PreviewRecentNearPetList() {
         val newestPetsState = NewestPetsUiState(
             loading = false,
             pets = MockLists.createPetList(10)
+        )
+        RecentNearPetList(state = newestPetsState)
+    }
+}
+
+@Composable
+@Preview(showBackground = true, backgroundColor = 0xFFF5F3F8)
+fun PreviewRecentNearPetListLoading() {
+    AdoptAppTheme {
+        val newestPetsState = NewestPetsUiState(
+            loading = true,
+            pets = emptyList()
         )
         RecentNearPetList(state = newestPetsState)
     }

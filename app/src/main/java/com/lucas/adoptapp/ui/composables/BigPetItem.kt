@@ -107,12 +107,55 @@ private fun PetInfo(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EmptyBigPetItem(
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier
+            .clip(MaterialTheme.shapes.small)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+
+            val imageShape = RoundedCornerShape(
+                topStartPercent = 10,
+                bottomStartPercent = 10
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .aspectRatio(1f)
+                    .background(
+                        ImagePlaceholder,
+                        imageShape
+                    )
+                    .clip(imageShape),
+            )
+        }
+    }
+}
+
 @Composable
 @Preview(showBackground = true, backgroundColor = 0xFFF5F3F8)
 fun PreviewBigPetItem() {
     AdoptAppTheme {
         BigPetItem(
             pet = MockPet.createPetItem(1),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(130.dp)
+        )
+    }
+}
+
+@Composable
+@Preview(showBackground = true, backgroundColor = 0xFFF5F3F8)
+fun PreviewEmptyBigPetItem() {
+    AdoptAppTheme {
+        EmptyBigPetItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(130.dp)

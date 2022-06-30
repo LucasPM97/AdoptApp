@@ -14,6 +14,7 @@ import com.lucas.core.data.models.PetItem
 fun HorizontalPetList(
     pets: List<PetItem>,
     modifier: Modifier = Modifier,
+    isLoading: Boolean = false,
     contentPadding: PaddingValues = PaddingValues(horizontal = 20.dp),
     horizontalArrangement: Arrangement.Horizontal = Arrangement.spacedBy(20.dp)
 ) {
@@ -21,12 +22,21 @@ fun HorizontalPetList(
         modifier = modifier,
         contentPadding = contentPadding,
         horizontalArrangement = horizontalArrangement,
+        userScrollEnabled = !isLoading
     ) {
-        items(pets) { pet ->
-            SmallPetItem(
-                pet,
-                Modifier.size(80.dp)
-            )
+        if (!isLoading) {
+            items(pets) { pet ->
+                SmallPetItem(
+                    pet,
+                    Modifier.size(80.dp)
+                )
+            }
+        } else {
+            items(4) {
+                EmptySmallPetItem(
+                    Modifier.size(80.dp)
+                )
+            }
         }
     }
 }

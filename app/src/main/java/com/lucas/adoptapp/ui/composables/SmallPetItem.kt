@@ -47,6 +47,16 @@ fun SmallPetItem(pet: PetItem, modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun EmptySmallPetItem(modifier: Modifier = Modifier) {
+    val shape = MaterialTheme.shapes.small
+    Box(
+        modifier = modifier
+            .background(ImagePlaceholder, shape)
+            .clip(shape)
+    )
+}
+
 
 @Composable
 @Preview(showBackground = true, backgroundColor = 0xFFF5F3F8)
