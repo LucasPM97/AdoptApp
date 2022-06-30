@@ -8,4 +8,8 @@
     <string name="four_animals_content_description">four animals</string>
     <string name="banner_search_button">Ver centros</string>
     <string name="banner_search_body">Adoptar no es la única forma de ayudar.</string>
+    <string name="male">macho</string>
+    <string name="female">hembra</string>
+    <string name="adult">adulto</string>
+    <string name="puppy">cachorro</string>
 </resources>

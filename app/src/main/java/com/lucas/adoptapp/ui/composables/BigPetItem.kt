@@ -11,9 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.lucas.adoptapp.R
 import com.lucas.adoptapp.ui.theme.*
 import com.lucas.core.data.models.AgeType
 import com.lucas.core.data.models.PetItem
@@ -83,7 +85,7 @@ private fun PetInfo(
             }
         }
         Text(
-            text = if (pet.isMale) "Macho" else "Hembra",
+            text = genderText(pet.isMale),
             style = MaterialTheme.typography.bodyMedium,
             color = CaptionText
         )
@@ -98,12 +100,22 @@ private fun PetInfo(
         ) {
             Text(
                 text = when (pet.age) {
-                    AgeType.Adult -> "ADULTO"
-                    AgeType.Puppy -> "CACHORRO"
+                    AgeType.Adult -> stringResource(R.string.adult).uppercase()
+                    AgeType.Puppy -> stringResource(R.string.puppy).uppercase()
                 },
                 style = MaterialTheme.typography.bodyMedium
             )
         }
+    }
+}
+
+@Composable
+private fun genderText(isMale: Boolean): String {
+    val gender = if (isMale) stringResource(R.string.male)
+    else stringResource(R.string.female)
+
+    return gender.replaceFirstChar {
+        it.uppercase()
     }
 }
 
